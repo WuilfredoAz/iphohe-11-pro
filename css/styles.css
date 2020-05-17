@@ -22,6 +22,9 @@ body
 main
 {
     padding-top: 52px;
+    /* Altura de imagen + tamaño de segunda seccion + bordes up/down + menu + margen del iphone hero */
+    min-height: calc(2029px + 100vh + 120px + 52px + 30vh);
+    height: auto;
 }
 @font-face
 {
@@ -65,13 +68,25 @@ main
     margin: 0 auto;
     /* border: 1px solid red; */
 }
+.u-sombra
+{
+    position: absolute;
+    /* bottom: calc(-30vh - 30px); */
+    bottom: -30vh;
+    width: 100%;
+    height: calc(30vh + 5%);
+    background: linear-gradient(to bottom, #000 0%, transparent 60%);
+    pointer-events: none;
+    border: 1px solid red;
+    z-index: -1;
+}
 .header
 {
     height: 52px;
     position: fixed;
     left: 0;
     right: 0;
-    z-index: 2;
+    z-index: 3;
     /* border-bottom: .5px solid #292e33; */
     background: rgba(17, 17, 17, 0.85);
     backdrop-filter: saturate(180%) blur(10px);
@@ -149,7 +164,7 @@ main
 .primero__contenedor-imagen
 {
     /* border: 1px solid red; */
-    margin-top: 16%;
+    margin-top: 30vh;
     display: flex;
     justify-content: center;
 }
@@ -165,7 +180,7 @@ main
 {
     color: var(--titleColor);
     font-weight: 700;
-    font-size: 5.5em;
+    font-size: 5.45em;
     margin-bottom: .5em;
 }
 .segundo__copy
@@ -173,7 +188,7 @@ main
     font-weight: 700;
     font-size: 1.8em;
     margin-bottom: 1em;
-    padding: 0 10vw;
+    padding: 0 15vw;
 }
 .segundo__copy:nth-of-type(1)
 {
@@ -228,7 +243,7 @@ main
 }
 .tercero
 {
-    height: 80vh;
+    height: 90vh;
     min-height: initial;
 }
 .tercero .u-centrar,
@@ -240,7 +255,7 @@ main
 {
     display: grid;
     grid-template: 1fr / repeat(3, 1fr);
-    gap: 35px;
+    gap: 30px;
     height: 100%;
     width: 100%;
     background-color: var(--detailsColor);
@@ -254,6 +269,7 @@ main
 .tercero__imagen
 {
     vertical-align: top;
+    transition: .2s cubic-bezier(0.4, 0, 0.6, 1);
 }
 .tercero__contenedor-imagen:nth-of-type(1)
 {
@@ -262,14 +278,16 @@ main
 .tercero__contenedor-imagen:nth-of-type(1) .tercero__imagen
 {
     width: 85%;
-    transform: translateY(56px);
+    /* transform: translateY(56px); */
+    transform: translateY(200px);
 }
 .tercero__contenedor-imagen:nth-of-type(2) .tercero__imagen
 {
     height: calc(100% + 35vh);
     width: 100%;
     object-fit: cover;
-    transform: translateY(-150px);
+    /* transform: translateY(-150px); */
+    transform: translateY(-100px);
 }
 .tercero__contenedor-imagen:nth-of-type(3)
 {
@@ -281,6 +299,7 @@ main
 {
     height: 80%;
     width: auto;
+    transform: translateY(150px);
 }
 .cuarto
 {
@@ -396,6 +415,41 @@ main
 .quinto__copy
 {
     color: var(--linksColor);
+}
+/* -----------------------------------------------------For effects only--------------------------------------------- */
+.primero
+{
+    position: relative;
+    z-index: 2;
+    border: 30px solid var(--detailsColor);
+    border-bottom: none;
+    background: linear-gradient(to bottom, #000 0%, #000 94%, transparent 95%, transparent 100%);
+}
+.segundo
+{
+    position: fixed;
+    bottom: 0;
+    background: var(--bgColor);
+    border: 30px solid var(--detailsColor);
+    min-height: calc(100vh - 52px);
+    /* margin-top: 52px; */
+    z-index: 1;
+    /* height: 100vh; */
+}
+.tercero
+{
+    position: fixed;
+    border: 1px solid green;
+    border: 30px solid var(--detailsColor);
+    /* z-index: 5; */
+}
+.tercero .u-sombra
+{
+    z-index: 1;
+    bottom: initial;
+    top: 0;
+    background: linear-gradient(to bottom, #000 0%, transparent 95%);
+    border: 1px solid yellow;
 }
 @media screen and (min-width: 1300px)
 {
