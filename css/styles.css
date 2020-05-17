@@ -19,6 +19,10 @@ body
     background: var(--bgColor);
     color: var(--copysColor);
 }
+main
+{
+    padding-top: 52px;
+}
 @font-face
 {
     font-family: 'icomoon';
@@ -127,6 +131,7 @@ body
     background: #0d6bc9;
     color: var(--linksColor);
 }
+.primero,
 .segundo,
 .tercero,
 .cuarto
@@ -140,6 +145,21 @@ body
     border-bottom: 17.5px solid var(--detailsColor);
     border-left: 35px solid var(--detailsColor);
     border-right: 35px solid var(--detailsColor);
+}
+.primero__contenedor-imagen
+{
+    /* border: 1px solid red; */
+    margin-top: 16%;
+    display: flex;
+    justify-content: center;
+}
+.primero__imagen
+{
+    vertical-align: top;
+    mask-image: url("../img/iphone-mask.svg");
+        -webkit-mask-image: url("../img/iphone-mask.svg");
+    mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
 }
 .segundo__titulo
 {
