@@ -6,7 +6,16 @@ const sombraHero = document.querySelector(".primero .js-sombra");
 const sombraTercero = document.querySelector(".tercero .js-sombra");
 const tercero = document.querySelector(".tercero");
 var pastHeight= 0;
-
+// Guardamos en una variable a la sombra de abajo del tercero
+const sombraTerceroAbajo = document.querySelector(".tercero .js-sombra:nth-child(3)");
+// Guardamos en una variable a la ultima sombra de la tercera seccion
+const sombraTerceroUltima = document.querySelector(".tercero .u-sombra:nth-of-type(2)");
+// Guardamos en una variable a la cuarta seccion
+const cuarto = document.querySelector(".cuarto");
+// Guardamos en una variable la imagen referencial de la cuarta seccion
+const imagenCuarta = document.querySelector(".cuarto__imagen");
+// Guardo e una variable a la imagen que rotara en la quinta seccion
+const imagenQuinta = document.querySelector(".quinto__bg");
 
 // Creamos la funcion pertinente del escuchador de eventos
 function parallax(event)
@@ -104,6 +113,63 @@ function parallax(event)
             // Actualizo el valor de la altura actual
             pastHeight = currentHeight;
         }
+    }
+
+    // Si ya la tercera esta casi sin espacio visible
+    if(position>=3368)
+    {
+        var alturaTotal= document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        // -0.88 por correcion | *10 para que sume mas rapido
+        var valor = ((position / alturaTotal)-.88)*10;
+
+        // console.log(alturaTotal, valor);
+        // Pregunto si la sombra esta totalmente opaca
+        if((sombraTerceroAbajo.style.opacity===1) == false)
+        {
+            sombraTerceroAbajo.style.opacity = valor.toFixed(2);
+        }
+        // pregunto si la sombra esta activa
+    }
+
+    // Para mostrar la cuarta seccion oculta
+    if(position>=3127)
+    {
+        var alturaTotalDos= document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        // -0.88 por correcion | *10 para que sume mas rapido
+        var valorDos = ((position / alturaTotalDos)-.65)*300;
+
+        // Aplico el margen para generar espaciado
+        tercero.style.marginBottom= 802 + "px";
+        // voy moviendo la imagen
+        imagenCuarta.style.transform= "translateX("+ valorDos +"px)"
+    }
+
+    // Para cuando haya terminado de scrollear la tercera seccion oculto la sombra de abajo
+    if(position>=3664)
+    {
+        // Quitamos la sombra
+        sombraTerceroUltima.style.opacity=0;
+        tercero.style.marginBottom="0";
+        cuarto.style.position="relative";
+    }
+    else
+    {
+        // Aplicamos la sombra
+        sombraTerceroUltima.style.opacity="";
+        tercero.style.marginBottom= 802 + "px";
+        cuarto.style.position="fixed";
+    }
+
+    // Comienzo a rotar la imagen de la quinta seccion
+    if(position>=3700)
+    {
+        var rotacion= document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        // -0.88 por correcion | *10 para que sume mas rapido
+        var rotacionPor = ((position / rotacion)-.70)*250;
+
+        var alturaTranslate = (((position / rotacion)-.70)+50)*.2;
+
+        imagenQuinta.style.transform= "translateY(-"+ alturaTranslate.toFixed(2) +"%)" + "rotate("+ rotacionPor.toFixed(2) +"deg)"
     }
 
     // console.log(currentHeight)

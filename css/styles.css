@@ -75,9 +75,9 @@ main
     bottom: -30vh;
     width: 100%;
     height: calc(30vh + 5%);
-    background: linear-gradient(to bottom, #000 0%, transparent 60%);
+    background: linear-gradient(to bottom, #000 0%, transparent 70%);
     pointer-events: none;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     z-index: -1;
 }
 .header
@@ -373,7 +373,8 @@ main
 .cuarto__imagen
 {
     vertical-align: top;
-    transform: translateX(30px);
+    /* transform: translateX(30px); */
+    transition: .3s;
 }
 .quinto
 {
@@ -439,7 +440,7 @@ main
 .tercero
 {
     position: fixed;
-    border: 1px solid green;
+    /* border: 1px solid green; */
     border: 30px solid var(--detailsColor);
     /* z-index: 5; */
 }
@@ -449,8 +450,38 @@ main
     bottom: initial;
     top: 0;
     background: linear-gradient(to bottom, #000 0%, transparent 95%);
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
 }
+.tercero .u-sombra:nth-child(3)
+{
+    /* border: 1px solid red; */
+    bottom: 0;
+    top: initial;
+    background: linear-gradient(to bottom, transparent 0%, #000 95%);
+}
+
+.tercero .u-sombra:nth-of-type(2)
+{
+    /* border: 1px solid red; */
+    z-index: 2;
+    bottom: calc(-30vh - 5% - 30px);
+    top: initial;
+}
+
+.cuarto
+{
+    position: fixed;
+    z-index: -1;
+    /* border: 1px solid red; */
+    bottom: 0;
+    width: 100%;
+}
+
+.sexto
+{
+    min-height: 100vh;
+}
+
 @media screen and (min-width: 1300px)
 {
     .u-centrar
